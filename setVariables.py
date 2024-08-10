@@ -10,7 +10,7 @@ def SetVariable(data, path=''):
             SetVariable(v, new_key)
     elif isinstance(data, list):
         for i,v in enumerate(data):
-            new_key = f"{path}[{i}]" if path else f"[{i}]"
+            new_key = f"{path}.{i}" if path else f"{i}"
             SetVariable(v, new_key)
     else:
         cmd = f"az pipelines variable-group variable {isCreateOrUpdate} --detect false --group-id {group_id} --name {new_key} --value {json.dumps(data)} --org {org} --project \"{project}\""
