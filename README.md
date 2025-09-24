@@ -8,14 +8,22 @@
 
 1. Clone this repository's code
 2. Open a terminal and navigate to the project's root folder
-3. Run the following command to install the required dependencies:
+3. Run the script using the following command structure:
 
 ```bash
-python setVariables.py <json_path> <create|update> <group_id> <org> <project>
+python setVariables.py <json_file> --group-id <group_id> --org <org> --project <project> [--action <action>]
 ```
 
-json_path = sys.argv[1]
-isCreateOrUpdate = sys.argv[2]
-group_id = sys.argv[3]
-org = sys.argv[4]
-project = sys.argv[5]
+## Arguments
+
+-   `json_file`: (Required) Path to the JSON file containing the variables to be set.
+-   `--group-id`: (Required) The ID of the Azure DevOps variable group.
+-   `--org`: (Required) The URL of your Azure DevOps organization (e.g., `https://dev.azure.com/your-org`).
+-   `--project`: (Required) The name of your Azure DevOps project.
+-   `--action`: (Optional) The action to perform. Can be `create` or `update`. Defaults to `update`.
+
+## Example
+
+```bash
+python setVariables.py my_variables.json --group-id 12345 --org "https://dev.azure.com/my-awesome-org" --project "My-Awesome-Project" --action create
+```
