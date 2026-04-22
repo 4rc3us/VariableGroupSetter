@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - Mass Pipeline Trigger
+
+### Added
+- **`runAllPipelines.py` script:** A brand new dangerous yet powerful script to launch Azure DevOps pipelines programmatically.
+  - Built-in array fetching logic pulling metadata for all pipelines in an Azure DevOps Project via REST API.
+  - Queueing logic using POST requests directly natively without CLI wrappers.
+  - Strict safeguards introduced: `--folder` parameter (scopes runs to targeted subdirectories inside Azure DevOps) and `--dry-run` parameter (ensures users know exactly what will run before dropping hundreds of jobs to queues).
+
 ## [2.0.0] - Azure DevOps REST API & AppSettings Generator
 
 ### Added

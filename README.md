@@ -65,3 +65,30 @@ python3 generateAppSettings.py \
 - `--project`: (Required) The name of your Azure DevOps project.
 - `--out`: (Optional) Path to save the resulting JSON. Defaults to `appsettings.json` in the current directory.
 - `--pat`: (Optional) Your Azure DevOps token. Falls back to `AZURE_DEVOPS_EXT_PAT`.
+
+---
+
+## 3. Mass Pipeline Trigger (`runAllPipelines.py`)
+
+A dangerous yet powerful script that fetches and triggers all pipelines within an Azure DevOps project simultaneously. It incorporates safeguards like dry-runs and folder scoping to prevent agent pool exhaustion.
+
+### Usage
+
+```bash
+python3 runAllPipelines.py \
+    --org <org_url> \
+    --project <project_name> \
+    [--folder <\MyFolder>] \
+    [--branch <main>] \
+    [--dry-run] \
+    [--pat <personal_access_token>]
+```
+
+### Arguments
+
+- `--org`: (Required) The URL of your Azure DevOps organization.
+- `--project`: (Required) The name of your Azure DevOps project.
+- `--folder`: (Optional) Scope the launch to only pipelines located inside this ADO folder structure (e.g., `\Microservices`).
+- `--branch`: (Optional) Specifically run pipelines against this branch. If omitted, triggers logic uses ADO's default branch per pipeline.
+- `--dry-run`: (Optional) Simulates the execution. Prints which pipelines would be targeted without actually queueing them.
+- `--pat`: (Optional) Your Azure DevOps token. Falls back to `AZURE_DEVOPS_EXT_PAT`.
